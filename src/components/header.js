@@ -8,7 +8,6 @@ import * as ROUTES from '../constants/routes';
 export default function Header() {
     const { firebase } = useContext(FirebaseContext);
     const { user } = useContext(UserContext);
-    console.log('user', user)
 
     return (
         <header className="h-16 bg-white border-b border-gray-300 mb-8">
