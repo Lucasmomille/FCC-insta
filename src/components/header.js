@@ -66,8 +66,8 @@ export default function Header() {
                                         </svg>
                                     </button>
                                     <div className="flex items-center cursor-pointer">
-                                        <Link to={`/p/$user.displayName`}>
-                                            <img src={`/images/avatars/${user.displayName}.jpg`} alt="" className="rounded-full h-8 w-8 flex" />
+                                        <Link to={`/p/${user.displayName}`}>
+                                            <img src={`/images/avatars/${user.displayName}.jpg`} alt={`${user.displayName} profile`} className="rounded-full h-8 w-8 flex" />
                                         </Link>
                                     </div>
                                 </>
@@ -76,7 +76,7 @@ export default function Header() {
                                     <Link to={ROUTES.LOGIN}>
                                         <button
                                             type="button"
-                                            className="bg-blue-medium font-bold text-sm rounded text-white w-20 h-8"
+                                            className="bg-blue-500 font-bold text-sm rounded text-white w-20 h-8"
                                         >
                                             Log In
                                         </button>
@@ -84,7 +84,7 @@ export default function Header() {
                                     <Link to={ROUTES.SIGNUP}>
                                         <button
                                             type="button"
-                                            className="font-bold text-sm rounded text-blue-medium w-20 h-8"
+                                            className="font-bold text-sm rounded text-blue-500 w-20 h-8"
                                         >
                                             Sign Up
                                         </button>
