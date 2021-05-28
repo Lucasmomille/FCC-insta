@@ -29,7 +29,7 @@ export default function Suggestions({ userId }) {
                 <p className="font-bold text-gray-500">Suggestions for you</p>
             </div>
             <div className="mt-4 grid gap-5">
-                {/* {profiles.map((profile) => (
+                {profiles.map((profile) => (
                     <SuggestedProfile
                         key={profile.docId}
                         profileDocId={profile.docId}
@@ -38,7 +38,7 @@ export default function Suggestions({ userId }) {
                         userId={userId}
                         loggedInUserDocId={loggedInUserDocId}
                     />
-                ))} */}
+                ))}
             </div>
 
         </div>

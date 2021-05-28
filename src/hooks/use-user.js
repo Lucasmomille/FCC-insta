@@ -14,8 +14,9 @@ export default function useUser() {
             setActiveUser(response)
         }
         if (user?.uid) {
-            getUserByUserId();
+            getUserObjByUserId()
         }
+
     }, [user]);
 
     return { user: activeUser };

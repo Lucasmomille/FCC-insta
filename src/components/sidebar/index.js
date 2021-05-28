@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import User from './user';
 import Suggestions from './suggestions';
 import useUser from '../../hooks/use-user';
-//import LoggedInUserContext from '../../context/logged-in-user';
+import LoggedInUserContext from '../../context/logged-in-user';
 
 export default function Sidebar() {
     /* const { user: { docId = '', fullName, username, userId, following } = {} } = useContext(
