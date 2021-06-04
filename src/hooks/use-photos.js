@@ -3,7 +3,7 @@ import { getPhotos } from '../services/firebase';
 
 export default function usePhotos(user) {
     const [photos, setPhotos] = useState(null);
-
+    //6:04:00 avant on peut voir le premier code
     useEffect(() => {
         async function getTimelinePhotos() {
             // does the user actually follow people?
