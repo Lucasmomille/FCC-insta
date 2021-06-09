@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import LoggedInUserContext from '../context/logged-in-user';
 import usePhotos from '../hooks/use-photos';
+import Post from './post';
 
 
 export default function Timeline() {
@@ -14,12 +15,10 @@ export default function Timeline() {
             {!photos ? (
 
 
-                <Skeleton count={1} width={640} height={400} className="mb-5" />
+                <Skeleton count={4} width={640} height={500} className="mb-5" />
 
-            ) : photos && photos.length > 0 ? (
-                photos.map((content) => <p key={content.docId}>{content.imageSrc}</p>)
             ) : (
-                <p className="text-center text-2xl">Follow people to see some amazing photos</p>
+                photos.map((content) => <Post key={content.docId} content={content} />)
             )}
         </div>
     );
