@@ -4,11 +4,14 @@ import * as ROUTES from './constants/routes';
 import UserContext from './context/user';
 import useAuthListener from './hooks/use-auth-listener';
 
+import ProtectedRoute from './helpers/protected.route';
+import IsUserLoggedIn from './helpers/is-user-logged-in';
+
 const Login = lazy(() => import('./pages/login'));
 const SignUp = lazy(() => import('./pages/sign-up'));
 const Dashboard = lazy(() => import('./pages/dashboard'));
 const Lost = lazy(() => import('./pages/lost'));
-
+//7:25
 function App() {
   const { user } = useAuthListener();
   return (
@@ -16,10 +19,18 @@ function App() {
       <Router>
         <Suspense fallback={<p>Loading...</p>}>
           <Switch>
-            <Route path={ROUTES.LOGIN} component={Login} />
-            <Route path={ROUTES.SIGNUP} component={SignUp} />
+            <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.LOGIN}>
+              <Login />
+            </IsUserLoggedIn>
+            <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.SIGNUP}>
+              <SignUp />
+            </IsUserLoggedIn>
+
+            <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
+              <Dashboard />
+            </ProtectedRoute>
             <Route path={ROUTES.LOST} component={Lost} />
-            <Route path={ROUTES.DASHBOARD} excat component={Dashboard} />
+
 
           </Switch>
         </Suspense>
