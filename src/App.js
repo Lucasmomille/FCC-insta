@@ -10,8 +10,10 @@ import IsUserLoggedIn from './helpers/is-user-logged-in';
 const Login = lazy(() => import('./pages/login'));
 const SignUp = lazy(() => import('./pages/sign-up'));
 const Dashboard = lazy(() => import('./pages/dashboard'));
+const Profile = lazy(() => import('./pages/profile'));
 const Lost = lazy(() => import('./pages/lost'));
 //7:25
+// Here profile are public if we want a private profile put a boolean
 function App() {
   const { user } = useAuthListener();
   return (
@@ -25,7 +27,7 @@ function App() {
             <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.SIGNUP}>
               <SignUp />
             </IsUserLoggedIn>
-
+            <Route path={ROUTES.PROFILE} component={Profile} />
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
             </ProtectedRoute>
