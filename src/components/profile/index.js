@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Header from './header';
 import Photos from './photos';
 import { getUserPhotosByUserId } from '../../services/firebase';
-
+/* eslint-disable */
 export default function Profile({ user }) {
     const reducer = (state, newState) => ({ ...state, ...newState });
     const initialState = {
@@ -23,6 +23,7 @@ export default function Profile({ user }) {
             dispatch({ profile: user, photosCollection: photos, followerCount: user.followers.length });
         }
         getProfileInfoAndPhotos();
+        console.log("it's a test" + user.private);
     }, [user.username]);
 
     return (
@@ -33,7 +34,12 @@ export default function Profile({ user }) {
                 followerCount={followerCount}
                 setFollowerCount={dispatch}
             />
-            <Photos photos={photosCollection} />
+            {!user.private ? (
+                <Photos photos={photosCollection} />
+            ) : <div className="h-16 border-t border-gray-primary mt-12 pt-4">
+                <p className="text-center text-2xl"> It's a private account</p>
+
+            </div>}
         </>
     );
 }

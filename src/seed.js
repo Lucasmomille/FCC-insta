@@ -1,7 +1,7 @@
 /* eslint-disable no-plusplus */
 // NOTE: replace 'oPm8RgSZv4ZnMCXhtG49G0urLSm1' with your Firebase auth user id (can be taken from Firebase)
 export function seedDatabase(firebase) {
-    const users = [
+    /* const users = [
         {
             userId: 'oPm8RgSZv4ZnMCXhtG49G0urLSm1',
             username: 'lucas',
@@ -43,7 +43,7 @@ export function seedDatabase(firebase) {
     // eslint-disable-next-line prefer-const
     for (let k = 0; k < users.length; k++) {
         firebase.firestore().collection('users').add(users[k]);
-    }
+    } */
 
     // eslint-disable-next-line prefer-const
     for (let i = 1; i <= 5; ++i) {
@@ -52,22 +52,22 @@ export function seedDatabase(firebase) {
             .collection('photos')
             .add({
                 photoId: i,
-                userId: '2',
-                imageSrc: `/images/users/raphael/${i}.jpg`,
-                caption: 'Saint George and the Dragon',
+                userId: '4',
+                imageSrc: `/images/users/orwell/${i}.jpg`,
+                caption: 'Orwell',
                 likes: [],
                 comments: [
                     {
-                        displayName: 'dali',
-                        comment: 'Love this place, looks like my animal farm!'
+                        displayName: 'lucas',
+                        comment: 'My fav pic!'
                     },
                     {
-                        displayName: 'orwell',
+                        displayName: 'raphael',
                         comment: 'Would you mind if I used this picture?'
                     }
                 ],
-                userLatitude: '40.7128°',
-                userLongitude: '74.0060°',
+                userLatitude: '41.7128°',
+                userLongitude: '75.0060°',
                 dateCreated: Date.now()
             });
     }

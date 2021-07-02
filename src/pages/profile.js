@@ -15,6 +15,7 @@ export default function Profile() {
             const [user] = await getUserByUsername(username);
             if (user?.userId) {
                 setUser(user);
+
             } else {
                 history.push(ROUTES.LOST);
             }
@@ -32,3 +33,4 @@ export default function Profile() {
         </div>
     ) : null;
 }
+
