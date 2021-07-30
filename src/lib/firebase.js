@@ -2,7 +2,7 @@ import Firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-//import { seedDatabase } from '../seed'; We don't have to run this twice
+//import { seedDatabase } from '../seed'; //We don't have to run this twice
 
 
 const config = {

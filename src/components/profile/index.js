@@ -1,17 +1,20 @@
-import { useReducer, useEffect } from 'react';
+import { useReducer, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Header from './header';
 import Photos from './photos';
-import { getUserPhotosByUserId } from '../../services/firebase';
+
+import { getUserPhotosByUserId, isUserFollowingProfile } from '../../services/firebase';
 /* eslint-disable */
 export default function Profile({ user }) {
+    //const { user: loggedInUser } = useContext(UserContext);
+    //const { user } = useUser(loggedInUser?.uid); use-user hook pb with object user
     const reducer = (state, newState) => ({ ...state, ...newState });
     const initialState = {
         profile: {},
         photosCollection: null,
         followerCount: 0
     };
-
+    const [isFollowingProfile, setIsFollowingProfile] = useState(null);
     const [{ profile, photosCollection, followerCount }, dispatch] = useReducer(
         reducer,
         initialState
@@ -23,7 +26,15 @@ export default function Profile({ user }) {
             dispatch({ profile: user, photosCollection: photos, followerCount: user.followers.length });
         }
         getProfileInfoAndPhotos();
-        console.log("it's a test" + user.private);
+        const isFollowingUser = async () => {
+            const isFollowing = await isUserFollowingProfile(user.username, user.userId);
+            //const isItPrivate = isFollowing && user.private;
+            setIsFollowingProfile(isFollowing)
+
+        }
+        isFollowingUser();
+        const isItPrivate = isFollowingProfile && user.private;
+        console.log("it's a test" + isFollowingProfile);
     }, [user.username]);
 
     return (

@@ -16,6 +16,7 @@ const Lost = lazy(() => import('./pages/lost'));
 // Here profile are public if we want a private profile put a boolean
 function App() {
   const { user } = useAuthListener();
+  console.log(user);
   return (
     <UserContext.Provider value={{ user }}>
       <Router>
