@@ -41,6 +41,8 @@ export default function Login() {
                     <h1 className="flex justify-center w-full">
                         <img src="/images/logo.png" alt="Instagram" className="mt-2 w-6/12 mb-4" />
                     </h1>
+                    <p>Ceci n'est pas Insta</p>
+                    <p>Pas de fonctionnalité mot de passe oublié</p>
 
                     {error && <p className="mb-4 text-xs text-red-500">{error}</p>}
 
